@@ -80,43 +80,10 @@ function setupMap(center) {
     const last_route = all_route[all_route.length - 1]["maneuver"]["location"];
 
     console.log(first_route, last_route);
+    fetchTransitInfo([first_route[1], first_route[0]], [last_route[1], last_route[0]], map);
+    console.log(map.getSource('routes'));
   });
-  var origin = [43.5484,-79.6626];
-  var destination = [43.7832,-79.1872];
-
-  fetchTransitInfo(origin, destination, map);
+  // var origin = [43.5484,-79.6626];
+  // var destination = [43.7832,-79.1872];
+  // fetchTransitInfo(origin, destination, map);
 }
-
-// origintest: [43.5484,-79.6626]
-// destinationtest: [43.7832,-79.1872]
-
-// map.on("load", () => {
-//   map.addSource("route", {
-//     type: "geojson",
-//     data: {
-//       type: "Feature",
-//       properties: {},
-//       geometry: {
-//         type: "LineString",
-//         coordinates: [
-//           [-122.483696, 37.833818],
-//           [-122.483482, 37.833174],
-//         ],
-//       },
-//     },
-//   });
-
-//   map.addLayer({
-//     id: "route",
-//     type: "line",
-//     source: "route",
-//     layout: {
-//       "line-join": "round",
-//       "line-cap": "round",
-//     },
-//     paint: {
-//       "line-color": "#888",
-//       "line-width": 8,
-//     },
-//   });
-// });
