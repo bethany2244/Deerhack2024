@@ -20,7 +20,6 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
 //success location
 
 function successLocation(position) {
-  console.log(position);
   setupMap([position.coords.longitude, position.coords.latitude]);
 
   //construct marker for current location -> aqua blue
@@ -66,35 +65,21 @@ function setupMap(center) {
   });
 
   map.addControl(directions, "top-left");
+
+  directions.on("route", function (event) {
+    let route = event.route;
+    // console.log("Route:", route["0"]);
+
+    //fetching the start point and the end point of the navigation****************
+    const all_route = route["0"]["legs"]["0"]["steps"];
+    console.log(all_route);
+
+    for (const el of all_route) {
+      console.log(el["maneuver"]["location"]);
+    }
+    const first_route = all_route[0]["maneuver"]["location"];
+    const last_route = all_route[all_route.length - 1]["maneuver"]["location"];
+
+    console.log(first_route, last_route);
+  });
 }
-
-map.on("load", () => {
-  map.addSource("route", {
-    type: "geojson",
-    data: {
-      type: "Feature",
-      properties: {},
-      geometry: {
-        type: "LineString",
-        coordinates: [
-          [-122.483696, 37.833818],
-          [-122.483482, 37.833174],
-        ],
-      },
-    },
-  });
-
-  map.addLayer({
-    id: "route",
-    type: "line",
-    source: "route",
-    layout: {
-      "line-join": "round",
-      "line-cap": "round",
-    },
-    paint: {
-      "line-color": "#888",
-      "line-width": 8,
-    },
-  });
-});
