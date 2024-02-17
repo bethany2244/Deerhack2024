@@ -70,7 +70,7 @@ function setupMap(center) {
     let route = event.route;
     // console.log("Route:", route["0"]);
 
-    //fetching the start point and the end point of the navigation****************
+    //fetching the start point and the end point of the navigation******
     const all_route = route["0"]["legs"]["0"]["steps"];
     console.log(all_route);
 
