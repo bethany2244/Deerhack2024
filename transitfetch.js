@@ -1,8 +1,8 @@
 import "./node_modules/@liberty-rider/flexpolyline/index.js";
 import polyline from "./node_modules/@liberty-rider/flexpolyline/index.js";
 import { constructMarker } from "./marker.js";
-import { currentMarker } from "./script.js";
 import { FormatString } from "./formatstring.js";
+import { currentMarker } from "./script.js";
 
 const hereApiKey = `g6nnuctjhkfGxqmdV-clZzkcZlq7mTLEyHlj59oFIM8`;
 
@@ -115,7 +115,7 @@ export function fetchTransitInfo(position1, position2, map) {
           layout: {},
           paint: {
             "line-color": "#ff0000",
-            "line-width": 6,
+            "line-width": 3,
           },
           filter: ["==", "$type", "LineString"],
         });
@@ -127,10 +127,10 @@ export function fetchTransitInfo(position1, position2, map) {
           source: `routes`,
           layout: {},
           paint: {
-            "circle-radius": 6,
+            "circle-radius": 5,
             "circle-color": "#0000ff",
             "circle-stroke-color": "white",
-            "circle-stroke-width": 3,
+            "circle-stroke-width": 1,
           },
           filter: ["==", "$type", "Point"],
         });

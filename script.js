@@ -94,7 +94,7 @@ function setupMap(center) {
   // var origin = [43.5484,-79.6626];
   // var destination = [43.7832,-79.1872];
   // fetchTransitInfo(origin, destination, map);
-
+  //clearMarkers(currentMarker);
   function clearMarkers(currentMarker) {
     for (i = 0; i < currentMarker.length; i++) {
       currentMarker[i].remove();
