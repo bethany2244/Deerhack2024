@@ -100,7 +100,7 @@ export function fetchTransitInfo(position1, position2, map) {
               'layout': {},
               'paint': {
               'line-color': '#ff0000',
-              'line-width': 3
+              'line-width': 6
               },
               'filter': ['==', '$type', 'LineString']
             });
@@ -112,10 +112,10 @@ export function fetchTransitInfo(position1, position2, map) {
               'source': `routes`,
               'layout': {},
               'paint': {
-                'circle-radius': 5,
+                'circle-radius': 6,
                 'circle-color': '#0000ff',
                 'circle-stroke-color': 'white',
-                'circle-stroke-width': 1,
+                'circle-stroke-width': 3,
               },
               'filter': ['==', '$type', 'Point']
             });
