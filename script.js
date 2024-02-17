@@ -1,5 +1,6 @@
 import { fetchApi } from "./fetch.js";
 import { constructMarker } from "./marker.js";
+import { fetchTransitInfo } from "./transitfetch.js";
 let map = null;
 
 mapboxgl.accessToken =
@@ -21,7 +22,6 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
 
 function successLocation(position) {
   setupMap([position.coords.longitude, position.coords.latitude]);
-
   //construct marker for current location -> aqua blue
   constructMarker(
     "#2adeeb",
@@ -56,7 +56,6 @@ function setupMap(center) {
     center: center,
     zoom: 14,
   });
-
   const nav = new mapboxgl.NavigationControl();
   map.addControl(nav);
 
@@ -82,4 +81,42 @@ function setupMap(center) {
 
     console.log(first_route, last_route);
   });
+  var origin = [43.5484,-79.6626];
+  var destination = [43.7832,-79.1872];
+
+  fetchTransitInfo(origin, destination, map);
 }
+
+// origintest: [43.5484,-79.6626]
+// destinationtest: [43.7832,-79.1872]
+
+// map.on("load", () => {
+//   map.addSource("route", {
+//     type: "geojson",
+//     data: {
+//       type: "Feature",
+//       properties: {},
+//       geometry: {
+//         type: "LineString",
+//         coordinates: [
+//           [-122.483696, 37.833818],
+//           [-122.483482, 37.833174],
+//         ],
+//       },
+//     },
+//   });
+
+//   map.addLayer({
+//     id: "route",
+//     type: "line",
+//     source: "route",
+//     layout: {
+//       "line-join": "round",
+//       "line-cap": "round",
+//     },
+//     paint: {
+//       "line-color": "#888",
+//       "line-width": 8,
+//     },
+//   });
+// });
