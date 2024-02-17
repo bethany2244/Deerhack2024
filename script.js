@@ -1,45 +1,57 @@
+import { fetchApi } from "./fetch.js";
+import { constructMarker } from "./marker.js";
+let map = null;
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmxpYW5nMjIyNCIsImEiOiJjbHNwY2w3OGMwcTdsMnZvZ2Joa3V0b2g4In0.RgKi_Gas_6E43r_82M5_cg";
+
+const category = {
+  "Bus Station": "#f0afaa",
+  Coffee: "#FF5733",
+  Restaurant: "#9abaed",
+  Grocery: "#f0d25b",
+};
 
 //get current location
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enableHighAccuracy: true,
 });
 
+//success location
+
 function successLocation(position) {
   console.log(position);
   setupMap([position.coords.longitude, position.coords.latitude]);
 
-  const apiUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/donut.json?type=poi?proximity=${
-    (position.coords.longitude, position)
-  }&access_token=${mapboxgl.accessToken}`;
+  //construct marker for current location -> aqua blue
+  constructMarker(
+    "#2adeeb",
+    position.coords.longitude,
+    position.coords.latitude,
+    map
+  );
 
-  //find closest gas station with current location
-  const apiUrl2 = `https://api.mapbox.com/search/searchbox/v1/category/gas_station?access_token=${mapboxgl.accessToken}&language=en&limit=10&proximity=${position.coords.longitude}%2C${position.coords.latitude}`;
-
-  fetch(apiUrl2)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Network response was not ok: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Handle the data
-      console.log(data);
-    })
-    .catch((error) => {
-      // Handle errors
-      console.error("Fetch error:", error);
-    });
+  for (const el of Object.keys(category)) {
+    fetchApi(
+      el,
+      position.coords.longitude,
+      position.coords.latitude,
+      category[el],
+      map
+    );
+  }
 }
+
+//error location
 
 function errorLocation() {
   setupMap([-2.24, 53.48]);
 }
 
+//set line
+
 function setupMap(center) {
-  const map = new mapboxgl.Map({
+  map = new mapboxgl.Map({
     container: "map",
     style: "mapbox://styles/mapbox/streets-v11",
     center: center,
@@ -55,3 +67,34 @@ function setupMap(center) {
 
   map.addControl(directions, "top-left");
 }
+
+map.on("load", () => {
+  map.addSource("route", {
+    type: "geojson",
+    data: {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "LineString",
+        coordinates: [
+          [-122.483696, 37.833818],
+          [-122.483482, 37.833174],
+        ],
+      },
+    },
+  });
+
+  map.addLayer({
+    id: "route",
+    type: "line",
+    source: "route",
+    layout: {
+      "line-join": "round",
+      "line-cap": "round",
+    },
+    paint: {
+      "line-color": "#888",
+      "line-width": 8,
+    },
+  });
+});
