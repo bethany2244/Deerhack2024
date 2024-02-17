@@ -3,6 +3,9 @@ import { constructMarker } from "./marker.js";
 import { fetchTransitInfo } from "./transitfetch.js";
 let map = null;
 
+//success location
+export var currentMarker = [];
+
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmxpYW5nMjIyNCIsImEiOiJjbHNwY2w3OGMwcTdsMnZvZ2Joa3V0b2g4In0.RgKi_Gas_6E43r_82M5_cg";
 
@@ -18,9 +21,6 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enableHighAccuracy: true,
 });
 
-//success location
-
-export var currentMarker = [];
 function successLocation(position) {
   setupMap([position.coords.longitude, position.coords.latitude]);
   //construct marker for current location -> aqua blue
@@ -72,6 +72,8 @@ function setupMap(center) {
     let route = event.route;
     // console.log("Route:", route["0"]);
 
+    clearMarkers(currentMarker);
+
     //fetching the start point and the end point of the navigation******
     const all_route = route["0"]["legs"]["0"]["steps"];
     console.log(all_route);
@@ -82,6 +84,8 @@ function setupMap(center) {
     const first_route = all_route[0]["maneuver"]["location"];
     const last_route = all_route[all_route.length - 1]["maneuver"]["location"];
 
+    directions.removeRoutes(); //remove route
+
     console.log(first_route, last_route);
     fetchTransitInfo(
       [first_route[1], first_route[0]],
@@ -89,14 +93,17 @@ function setupMap(center) {
       map
     );
     console.log(map.getSource("routes"));
+
+    fetchTransitInfo(first_route, last_route, map);
   });
 
   // var origin = [43.5484,-79.6626];
   // var destination = [43.7832,-79.1872];
   // fetchTransitInfo(origin, destination, map);
   //clearMarkers(currentMarker);
+
   function clearMarkers(currentMarker) {
-    for (i = 0; i < currentMarker.length; i++) {
+    for (let i = 0; i < currentMarker.length; i++) {
       currentMarker[i].remove();
     }
   }
