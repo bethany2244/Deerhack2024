@@ -22,7 +22,9 @@ export function fetchApi(type, x, y, color, map) {
       for (const el of data["features"]) {
         // console.log(el["geometry"]["coordinates"]); -> coordinates
         const coord = el["geometry"]["coordinates"];
-        constructMarker(color, coord[0], coord[1], map);
+        const name = el["properties"]["name"];
+        console.log(el);
+        constructMarker(color, coord[0], coord[1], map, name);
       }
 
       // Handle the data
