@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@liberty-rider/flexpolyline": "^0.1.0",
+    "animejs": "^3.2.2",
     "express": "^4.18.2"
   }
 }

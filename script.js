@@ -1,4 +1,5 @@
 import { fetchApi } from "./fetch.js";
+import { moveOffScreen } from "./initialani.js";
 import { constructMarker } from "./marker.js";
 import { fetchTransitInfo } from "./transitfetch.js";
 let map = null;
@@ -69,6 +70,9 @@ function setupMap(center) {
   map.addControl(directions, "top-left");
 
   directions.on("route", function (event) {
+    // animate
+    moveOffScreen();
+
     let route = event.route;
     // console.log("Route:", route["0"]);
 
