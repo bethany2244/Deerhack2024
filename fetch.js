@@ -1,4 +1,5 @@
 import { constructMarker } from "./marker.js";
+import { currentMarker } from "./script.js";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmxpYW5nMjIyNCIsImEiOiJjbHNwY2w3OGMwcTdsMnZvZ2Joa3V0b2g4In0.RgKi_Gas_6E43r_82M5_cg";
 
@@ -24,7 +25,7 @@ export function fetchApi(type, x, y, color, map) {
         const coord = el["geometry"]["coordinates"];
         const name = el["properties"]["name"];
 
-        constructMarker(color, coord[0], coord[1], map, name);
+        constructMarker(color, coord[0], coord[1], map, name, currentMarker);
       }
 
       // Handle the data

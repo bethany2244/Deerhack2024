@@ -20,6 +20,7 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
 
 //success location
 
+export var currentMarker = [];
 function successLocation(position) {
   setupMap([position.coords.longitude, position.coords.latitude]);
   //construct marker for current location -> aqua blue
@@ -27,7 +28,9 @@ function successLocation(position) {
     "#2adeeb",
     position.coords.longitude,
     position.coords.latitude,
-    map
+    map,
+    name,
+    currentMarker
   );
 
   for (const el of Object.keys(category)) {
@@ -80,10 +83,21 @@ function setupMap(center) {
     const last_route = all_route[all_route.length - 1]["maneuver"]["location"];
 
     console.log(first_route, last_route);
-    fetchTransitInfo([first_route[1], first_route[0]], [last_route[1], last_route[0]], map);
-    console.log(map.getSource('routes'));
+    fetchTransitInfo(
+      [first_route[1], first_route[0]],
+      [last_route[1], last_route[0]],
+      map
+    );
+    console.log(map.getSource("routes"));
   });
+
   // var origin = [43.5484,-79.6626];
   // var destination = [43.7832,-79.1872];
   // fetchTransitInfo(origin, destination, map);
+  //clearMarkers(currentMarker);
+  function clearMarkers(currentMarker) {
+    for (i = 0; i < currentMarker.length; i++) {
+      currentMarker[i].remove();
+    }
+  }
 }
