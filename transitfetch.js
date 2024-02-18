@@ -13,7 +13,6 @@ export function fetchTransitInfo(position1, position2, map) {
       if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.status}`);
       }
-
       return response.json();
     })
     .then((data) => {
