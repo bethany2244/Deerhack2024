@@ -2,8 +2,8 @@ import "./node_modules/@liberty-rider/flexpolyline/index.js";
 import polyline from "./node_modules/@liberty-rider/flexpolyline/index.js";
 import { constructMarker } from "./marker.js";
 import { FormatString } from "./formatstring.js";
-import { map, category, currentMarker } from "./script.js";
-import { fetchApi } from "./fetch.js";
+import { currentMarker } from "./script.js";
+
 const hereApiKey = `g6nnuctjhkfGxqmdV-clZzkcZlq7mTLEyHlj59oFIM8`;
 export var data = null;
 export function fetchTransitInfo(position1, position2, map) {
@@ -16,6 +16,7 @@ export function fetchTransitInfo(position1, position2, map) {
       return response.json();
     })
     .then((data) => {
+      console.log(data);
       // return these for POI centers
       var transitEndpoints = [];
       // check if 'routes' exists
@@ -140,7 +141,8 @@ export function fetchTransitInfo(position1, position2, map) {
     })
     .catch((error) => {
       // Handle errors
-      console.error("Fetch error:", error);
+      // console.error("Fetch error:", error);
+      errorAni();
     });
 }
 
