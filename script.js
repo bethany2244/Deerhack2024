@@ -65,6 +65,7 @@ function setupMap(center) {
 
   const directions = new MapboxDirections({
     accessToken: mapboxgl.accessToken,
+    interactive: false
   });
 
   map.addControl(directions, "top-left");
