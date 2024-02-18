@@ -22,6 +22,27 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
   enableHighAccuracy: true,
 });
 
+function successLocation2(position, id) {
+  setupMap([position.coords.longitude, position.coords.latitude]);
+  //construct marker for current location -> aqua blue
+  constructMarker(
+    "#2adeeb",
+    position.coords.longitude,
+    position.coords.latitude,
+    map,
+    name,
+    currentMarker
+  );
+
+  fetchApi(
+    id,
+    position.coords.longitude,
+    position.coords.latitude,
+    category[id],
+    map
+  );
+}
+
 function successLocation(position) {
   setupMap([position.coords.longitude, position.coords.latitude]);
   //construct marker for current location -> aqua blue
@@ -65,7 +86,7 @@ function setupMap(center) {
 
   const directions = new MapboxDirections({
     accessToken: mapboxgl.accessToken,
-    interactive: false
+    interactive: false,
   });
 
   map.addControl(directions, "top-left");
@@ -104,5 +125,34 @@ function setupMap(center) {
     for (let i = 0; i < currentMarker.length; i++) {
       currentMarker[i].remove();
     }
+  }
+
+  // Add active class to the current control button (highlight it)
+  var btnContainer = document.getElementById("myBtnContainer");
+  var btns = btnContainer.getElementsByClassName("btn");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+      //get current location
+
+      //get current location
+      let id = this.id;
+      clearMarkers(currentMarker);
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          // Call your successLocation function with parameters
+          successLocation2(position, id);
+        },
+
+        errorLocation,
+        {
+          enableHighAccuracy: true,
+        }
+      );
+
+      console.log(id);
+    });
   }
 }

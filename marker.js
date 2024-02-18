@@ -7,7 +7,7 @@ export function constructMarker(c, long, lat, map, name, currentMarker) {
   console.log(name);
   const marker = new mapboxgl.Marker({
     color: c,
-    draggable: false
+    draggable: false,
   })
 
     .setLngLat([long, lat])
