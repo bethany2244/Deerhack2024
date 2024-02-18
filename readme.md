@@ -34,5 +34,12 @@ Our journey has been an incredible experience in exploring more API, Javascript,
 1. Clone the repository: `https://github.com/bethany2244/Deerhack2024.git`
 2. Install dependencies: `npm install`
 
+## Color Key Code
+Coffee: Red
+Restaurant: Pale Blue
+Grocery: Yellow
+Park: Orange
+Museum: Purple
+
 
 
