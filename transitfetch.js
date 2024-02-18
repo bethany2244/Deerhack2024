@@ -144,7 +144,6 @@ export function fetchTransitInfo(position1, position2, map) {
       console.error("Fetch error:", error);
     });
 }
-
 //fetch endpoint data
 function constructEndptMarker(endptData) {
   console.log("endpt", endptData);
