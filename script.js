@@ -23,7 +23,6 @@ navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
 });
 
 function successLocation2(position, id) {
-  setupMap([position.coords.longitude, position.coords.latitude]);
   //construct marker for current location -> aqua blue
   constructMarker(
     "#2adeeb",

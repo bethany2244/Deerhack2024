@@ -1,3 +1,4 @@
+import anime from "./node_modules/animejs/lib/anime.es.js";
 import { currentMarker } from "./script.js";
 
 export function constructMarker(c, long, lat, map, name, currentMarker) {
