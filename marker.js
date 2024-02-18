@@ -1,3 +1,4 @@
+import anime from "./node_modules/animejs/lib/anime.es.js";
 import { currentMarker } from "./script.js";
 
 export function constructMarker(c, long, lat, map, name, currentMarker) {
@@ -6,7 +7,7 @@ export function constructMarker(c, long, lat, map, name, currentMarker) {
   console.log(name);
   const marker = new mapboxgl.Marker({
     color: c,
-    draggable: true,
+    draggable: false
   })
 
     .setLngLat([long, lat])
