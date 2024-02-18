@@ -1,6 +1,6 @@
 import "./node_modules/@liberty-rider/flexpolyline/index.js";
 import polyline from "./node_modules/@liberty-rider/flexpolyline/index.js";
-import { constructClassMarker, constructMarker } from "./marker.js";
+import { constructMarker } from "./marker.js";
 import { FormatString } from "./formatstring.js";
 import { map, category, currentMarker } from "./script.js";
 import { fetchApi } from "./fetch.js";
@@ -85,14 +85,13 @@ export function fetchTransitInfo(position1, position2, map) {
           );
         }
         // create a marker for the beginning of every polyline with information
-        constructClassMarker(
+        constructMarker(
           "#000",
           routeImage[0][0],
           routeImage[0][1],
           map,
           pathMarker,
-          currentMarker,
-          'transitMarker'
+          currentMarker
         );
         featureCollection.push({
           type: "Feature",
