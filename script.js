@@ -2,7 +2,7 @@ import { fetchApi } from "./fetch.js";
 import { moveOffScreen } from "./initialani.js";
 import { constructMarker } from "./marker.js";
 import { fetchTransitInfo } from "./transitfetch.js";
-let map = null;
+export var map = null;
 
 //success location
 export var currentMarker = [];
@@ -10,7 +10,7 @@ export var currentMarker = [];
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYmxpYW5nMjIyNCIsImEiOiJjbHNwY2w3OGMwcTdsMnZvZ2Joa3V0b2g4In0.RgKi_Gas_6E43r_82M5_cg";
 
-const category = {
+export const category = {
   "Bus Station": "#f0afaa",
   Coffee: "#FF5733",
   Restaurant: "#9abaed",
@@ -97,8 +97,7 @@ function setupMap(center) {
       map
     );
     console.log(map.getSource("routes"));
-
-    const transit = fetchTransitInfo(first_route, last_route, map);
+    console.log(currentMarker, "after");
   });
   // var origin = [43.5484,-79.6626];
   // var destination = [43.7832,-79.1872];
