@@ -3,6 +3,7 @@ import polyline from "./node_modules/@liberty-rider/flexpolyline/index.js";
 import { constructMarker } from "./marker.js";
 import { FormatString } from "./formatstring.js";
 import { currentMarker } from "./script.js";
+import { errorAni } from "./initialani.js";
 
 const hereApiKey = `g6nnuctjhkfGxqmdV-clZzkcZlq7mTLEyHlj59oFIM8`;
 
@@ -17,6 +18,7 @@ export function fetchTransitInfo(position1, position2, map) {
       return response.json();
     })
     .then((data) => {
+      console.log(data);
       // return these for POI centers
       var transitEndpoints = [];
       // check if 'routes' exists
@@ -140,6 +142,7 @@ export function fetchTransitInfo(position1, position2, map) {
     })
     .catch((error) => {
       // Handle errors
-      console.error("Fetch error:", error);
+      // console.error("Fetch error:", error);
+      errorAni();
     });
 }

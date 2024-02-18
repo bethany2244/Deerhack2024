@@ -25,6 +25,12 @@ arrow.textContent = '🡅';
 desc.appendChild(arrow);
 
 document.body.appendChild(blurBox);
+
+var errorBox = document.createElement('div');
+errorBox.id = 'errorBox';
+errorBox.textContent = "Sorry, there doesn't seem to be an available transit route. Try a different location!";
+document.body.appendChild(errorBox);
+
 var arrowAni = anime({
     targets: '#arrow',
     translateY: 50,
@@ -53,6 +59,7 @@ export function moveOffScreen() {
         targets: '#arrowText',
         translateX: -500,
         easing: 'easeInBack',
+        delay: 500,
         complete: function(anim) {
             blurBox.style.zIndex = '-100';
         }
@@ -62,4 +69,20 @@ export function moveOffScreen() {
         opacity: 0,
         duration: 15000
     })
+}
+
+export function errorAni() {
+    var errorAni = anime({
+        targets: '#errorBox',
+        translateY: -100,
+        easing: 'easeOutExpo',
+        complete: function(anim) {
+            var errorAni2 = anime({
+                targets: '#errorBox',
+                translateY: 100,
+                delay: 3000,
+                easing: 'easeInExpo'
+            })
+        }
+      });
 }

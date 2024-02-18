@@ -97,13 +97,7 @@ function setupMap(center) {
       map
     );
     console.log(map.getSource("routes"));
-
-    fetchTransitInfo(first_route, last_route, map);
   });
-  // var origin = [43.5484,-79.6626];
-  // var destination = [43.7832,-79.1872];
-  // fetchTransitInfo(origin, destination, map);
-  //clearMarkers(currentMarker);
 
   function clearMarkers(currentMarker) {
     for (let i = 0; i < currentMarker.length; i++) {
