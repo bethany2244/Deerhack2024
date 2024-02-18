@@ -36,9 +36,13 @@ Our journey has been an incredible experience in exploring more API, Javascript,
 
 ## Color Key Code
 Coffee: Red
+
 Restaurant: Pale Blue
+
 Grocery: Yellow
+
 Park: Orange
+
 Museum: Purple
 
 
