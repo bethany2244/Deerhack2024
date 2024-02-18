@@ -31,7 +31,12 @@
     <title>google app clone</title>
 
     <style>
+      body {
+        overflow: hidden;
+      }
+
       /* imported google fonts */
+
       .borel-regular {
         font-family: "Borel", cursive;
         font-weight: 400;
@@ -113,6 +118,23 @@
         top: 0px;
         left: 10px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      /* error box */
+      #errorBox {
+        background-color: white;
+        color: black;
+        font-size: 30px;
+        position: fixed;
+        top: 100%;
+        border-radius: 25px;
+        margin: auto;
+        text-align: center;
+        overflow: hidden;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        height: 100%;
+        width: 100%;
+        padding: 40px;
       }
 
       /* Style the buttons */

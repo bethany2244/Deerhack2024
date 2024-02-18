@@ -1,9 +1,10 @@
 import "./node_modules/@liberty-rider/flexpolyline/index.js";
 import polyline from "./node_modules/@liberty-rider/flexpolyline/index.js";
-import { constructMarker } from "./marker.js";
+import { constructClassMarker, constructMarker } from "./marker.js";
 import { FormatString } from "./formatstring.js";
 import { map, category, currentMarker } from "./script.js";
 import { fetchApi } from "./fetch.js";
+import { errorAni } from "./initialani.js";
 const hereApiKey = `g6nnuctjhkfGxqmdV-clZzkcZlq7mTLEyHlj59oFIM8`;
 export function fetchTransitInfo(position1, position2, map) {
   const apiUrl = `https://transit.router.hereapi.com/v8/routes?apiKey=${hereApiKey}&origin=${position1[0]},${position1[1]}&destination=${position2[0]},${position2[1]}&return=polyline`;
@@ -84,13 +85,14 @@ export function fetchTransitInfo(position1, position2, map) {
           );
         }
         // create a marker for the beginning of every polyline with information
-        constructMarker(
+        constructClassMarker(
           "#000",
           routeImage[0][0],
           routeImage[0][1],
           map,
           pathMarker,
-          currentMarker
+          currentMarker,
+          'transitMarker'
         );
         featureCollection.push({
           type: "Feature",
@@ -141,6 +143,7 @@ export function fetchTransitInfo(position1, position2, map) {
     .catch((error) => {
       // Handle errors
       console.error("Fetch error:", error);
+      errorAni();
     });
 }
 //fetch endpoint data

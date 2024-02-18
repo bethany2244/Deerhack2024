@@ -118,8 +118,6 @@ function setupMap(center) {
       map
     );
     console.log(map.getSource("routes"));
-
-    fetchTransitInfo(first_route, last_route, map);
   });
 
   function clearMarkers(currentMarker) {
