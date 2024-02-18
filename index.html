@@ -19,10 +19,31 @@
       href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css"
       type="text/css"
     />
+     <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Borel&family=Indie+Flower&display=swap" rel="stylesheet">
 
     <title>google app clone</title>
 
     <style>
+      /* imported google fonts */
+      .borel-regular {
+        font-family: "Borel", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      .indie-flower-regular {
+        font-family: "Indie Flower", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+
       body {
         margin: 0;
       }
@@ -51,26 +72,27 @@
         overflow: visible;
       }
 
+      /* title */
       #titleText {
         color: white;
         font-size: 70px;
         position: relative;
         width: 100%;
-        top: 0;
+        top: 40px;
         text-align: center;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
 
+      /* tagline */
       #descText {
         color: white;
-        font-size: 30px;
+        font-size: 40px;
         position: relative;
         width: 100%;
-        top: 0;
+        top: -10px;
         text-align: center;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
 
+      /* left textbox */
       #arrowText {
         color: white;
         font-size: 30px;
@@ -78,9 +100,11 @@
         position: relative;
         width: 250px;
         left: 50px;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        top: -40px;
+        /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
       }
 
+      /* arrow box */
       #arrow {
         color: white;
         font-size: 40px;
