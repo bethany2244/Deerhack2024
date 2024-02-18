@@ -2,7 +2,7 @@
 
 
 ## Inspiration
-As students who study away from home, we often found ourselves relying on public transit to get from place to place. While this was often perfectly acceptable, there was one thing we always hated about public transit: transfers. To us, the only purpose of a transfer was to make it take longer to get from point A to B, and they were a massive waste of time. On the other hand, as university students, we spent much of our time working and studying with little free time. When we did have free time, we spent most of it getting dopamine hits from our phones or computers, making it difficult for us to truly recharge our mind. This project is our attempt at resolving these issues by giving people like us something to do to slow down and relax while waiting for their next bus. In addition, by making transfers better, we hoped to increase the appeal of public transit as a whole and encourage its use over less eco-friendly transportation methods.
+As students who study away from home, we often find ourselves relying on public transit to get from place to place. While this was often perfectly acceptable, there was one thing we always hated about public transit: transfers. To us, the only purpose of a transfer was to make it take longer to get from point A to B, and they were a massive waste of time. On the other hand, as university students, we spend much of our time working and studying with little free time. When we did have free time, we spent most of it getting dopamine hits from our phones or computers, making it difficult for us to truly recharge our minds. This project is our attempt at resolving these issues by giving people like us something to do to slow down and relax while waiting for their next bus. In addition, by making transfers better, we hoped to increase the appeal of public transit as a whole and encourage its use over less eco-friendly transportation methods.
 
 
 ## What it does
@@ -26,12 +26,7 @@ One accomplishment is that we are resilient and encouraging to each other throug
 
 ## What we learned
 
-Our journey has been an incredible experience in exploring more API, Javascript, and Node modules to efficiently display transit routes and points of interest for users to explore during their commute journey. We started this project with very little knowledge about how to even access an API, but we managed to learn so much about using libraries, communicating and working in a team, and connecting our frontend and backend code. Even though we only had a short amount of time, the knowledge and experience that we gained was invaluable.
-
-
-
-- [Installation]
-- [Usage]
+Our journey has been an incredible experience in exploring more API, Javascript, and Node modules to efficiently display transit routes and points of interest for users to explore during their commute journey. We started this project with very little knowledge about how to even access an API, but we managed to learn so much about using libraries, communicating and working in a team, and connecting our frontend and backend code. Even though we only had a short amount of time, the knowledge and experience we gained were invaluable.
 
 
 ## Installation
