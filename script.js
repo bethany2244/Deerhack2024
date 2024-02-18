@@ -15,6 +15,8 @@ export const category = {
   Coffee: "#FF5733",
   Restaurant: "#9abaed",
   Grocery: "#f0d25b",
+  Park: "#FFA500",
+  Museum: "#d4b7eb",
 };
 
 //get current location
