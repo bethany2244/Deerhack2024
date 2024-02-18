@@ -7,13 +7,13 @@ blurBox.id = 'blurBox';
 var title = document.createElement('div');
 title.id = 'titleText';
 title.classList.add('borel-regular');
-title.textContent = 'transit idle'
+title.textContent = 'transformit'
 blurBox.appendChild(title);
 
 var desc = document.createElement('div');
 desc.id = 'descText';
 desc.classList.add('indie-flower-regular');
-desc.textContent = 'Places to visit while you wait for your bus'
+desc.textContent = 'Transform your transit experience'
 blurBox.appendChild(desc);
 
 var arrowText = document.createElement('div');
